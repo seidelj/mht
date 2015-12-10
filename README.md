@@ -8,7 +8,7 @@ Make sure your current directory contains
 
 If it is your first time running the code, ensure that Stata knows to look in llisetetal.mlib
 
-From the stata command line
+From the Stata command line
 ```
 mata: mata mlist index
 ```
