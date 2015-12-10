@@ -20,7 +20,7 @@ program listetal
     mata: combo = buildcombo("`combo'", sizes[3])
     mata: numpc = buildnumpc(combo)
     mata: select = buildselect(onlymat, excludemat, sizes[1], sizes[2], numpc)
-    mata: results = listetal(Y, sub, D, combo, select)
+    mata: results = seidelxu(Y, sub, D, combo, select)
     mata: buildoutput("results", results)
 
     matlist results

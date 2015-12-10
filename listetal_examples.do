@@ -1,5 +1,4 @@
 clear all
-cd "data"
 insheet using data.csv, comma names
 //Creating outcome variable
 gen amountmat = amount * ratio
