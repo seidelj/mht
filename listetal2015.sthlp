@@ -2,22 +2,22 @@
 {findalias asfradohelp}{...}
 {vieweralsosee "" "--"}{...}
 {vieweralsosee "[R] help" "help help"}{...}
-{viewerjumpto "Syntax" "listetal##syntax"}{...}
-{viewerjumpto "Description" "listetal##description"}{...}
-{viewerjumpto "Options" "listetal##options"}{...}
+{viewerjumpto "Syntax" "listetal2015##syntax"}{...}
+{viewerjumpto "Description" "listetal2015##description"}{...}
+{viewerjumpto "Options" "listetal2015##options"}{...}
 {viewerjumpto "Remarks" "listetlal##remarks"}{...}
-{viewerjumpto "Examples" "listetal##examples"}{...}
+{viewerjumpto "Examples" "listetal2015##examples"}{...}
 {title:Title}
 
 {phang}
-{bf:listetal} {hline 2} Stata command for procedure detailed in List, Shaikh, Xu 2015
+{bf:listetal2015} {hline 2} Stata command for procedure detailed in List, Shaikh, Xu 2015
 
 
 {marker syntax}{...}
 {title:Syntax}
 
 {p 8 17 2}
-{cmdab:listetal}
+{cmdab:listetal2015}
 {varlist}
 {cmd:, } {it:treatment} [{it:options}]
 
@@ -29,8 +29,8 @@
 {synopt:{opth subgroup(varname)}}group identifier variable {it:varname}{p_end}
 {synopt:{opth combo(string)}}compair "treatmentcontrol" or "pairwise"; default is
     {cmd:combo("treatmentcontrol")}{p_end}
-{synopt:{opth only(name)}} the numoc*numsub*numpc hypothesis to be tested{p_end}
-{synopt:{opth exclude(name)}} The numoc*numsub*numpc hyptheisis not to be tested{p_end}
+{synopt:{opth only(name)}} the numoc*numsub*numpc hypotheses to be tested{p_end}
+{synopt:{opth exclude(name)}} The numoc*numsub*numpc hyptheses not to be tested{p_end}
 {synoptline}
 {p2colreset}{...}
 
@@ -38,7 +38,7 @@
 {title:Description}
 
 {pstd}
-{cmd:listetal} testing procedure for multiple hypothesis testing that asymptotically controls
+{cmd:listetal2015} testing procedure for multiple hypothesis testing that asymptotically controls
 familywise error rate and is asymptotically balanced for outcomes specified via {varlist}{p_end}
 
 {marker options}{...}
@@ -70,7 +70,7 @@ subgroup and column 3 is the treatment-control comparison. Where...{p_end}
 {phang3} 1 <= column 3 <= number of treatment-control comparisons{p_end}
 
 {phang}
-By default {cmd:listetal} will calculate all hypothesis based on the number of outcomes, subgroups and treatments provided by the user
+By default {cmd:listetal2015} will calculate all hypothesis based on the number of outcomes, subgroups and treatments provided by the user
 in {it:varlist} {it:group(varname)} and {it:treatment(varname)}, respectively. In section 4.4 of List, Shaikh and Xu simultaniously consider
 4 outcome variables, 4 subgroups and 3 treatment conditions, producting a table of 48 hypothesis test. However, there are cases in which you
 may only be interested in certain outcome by subgroup by treatment hypothesis. use {opt only} or {opt exclude}.{p_end}
@@ -83,11 +83,11 @@ For detailed information on the procedure, see URL Multiple Hypothesis Testing i
 
 {pstd}
 If you are running the command for the first time and receive an error message claiming certain functions are not found,
-ie nchoosek(), make sure that llistetal.mlib exists in your current dir and enter the command{p_end}
+ie nchoosek(), make sure that llistetal2015.mlib exists in your current dir and enter the command{p_end}
 {phang2}
 {cmd:. mata: mata mlib index}{p_end}
 {pstd}
-Which tells Stata to look in llistetal.mlib for mata functions that are required to run the command{p_end}
+Which tells Stata to look in llistetal2015.mlib for mata functions that are required to run the command{p_end}
 
 {marker examples}{...}
 {title:Examples}
@@ -105,23 +105,23 @@ Setup{p_end}
 
 {pstd}
 Example 1: Hypothesis testing with multiple outcomes{p_end}
-{phang}{cmd:. listetal gave amount amountmat amountchange, treatment(treatment) }{p_end}
+{phang}{cmd:. listetal2015 gave amount amountmat amountchange, treatment(treatment) }{p_end}
 
 {pstd}
 example 2: Hypothesis testing with multiple subgroups{p_end}
-{phang}{cmd:. listetal gave, treatment(treatment) subgroup(groupid) }{p_end}
+{phang}{cmd:. listetal2015 gave, treatment(treatment) subgroup(groupid) }{p_end}
 
 {pstd}
 example 3: Hypothesis testing with multiple treatments{p_end}
-{phang}{cmd:. listetal amount, treatment(ratio) }
+{phang}{cmd:. listetal2015 amount, treatment(ratio) }
 
 {pstd}
 Example 4: Hypothesis testing for all pairwise comparisons among the treatment and control groups{p_end}
-{phang}{cmd:. listetal amount, treatment(ratio) combo("pairwise") }
+{phang}{cmd:. listetal2015 amount, treatment(ratio) combo("pairwise") }
 
 {pstd}
 Example 5: Hypothesis testing with multiple outcomes, subgroups and treatments{p_end}
-{phang}{cmd:. listetal gave amount amountmat amountchange, subgroup(groupid) treatment(ratio) }{p_end}
+{phang}{cmd:. listetal2015 gave amount amountmat amountchange, subgroup(groupid) treatment(ratio) }{p_end}
 
 {pstd}
 Example 6: Now let's consider example 5, however we are only interested in the first outcome, subgroup and treatment-control comparison
@@ -131,7 +131,7 @@ First an N by 3 matrix must be defined. For more on basic mata and matrices see 
 {phang}{cmd:. mata: onlyHyp = (1,1,1) }{p_end}
 {pstd}
 Now we have a 1 by 3 matrix named onlyHyp to be passed to {opt only}{p_end}
-{phang}{cmd:. listetal gave amount amountmat amountchange, subgroup(groupid) treatment(ratio) only(onlyHyp)}{p_end}
+{phang}{cmd:. listetal2015 gave amount amountmat amountchange, subgroup(groupid) treatment(ratio) only(onlyHyp)}{p_end}
 
 {pstd}
 Example 7: Lets consider example 5 once more, but this time we are interested in all
@@ -139,4 +139,4 @@ but the last outcome, subgroup and treatment hypothesis.{p_end}
 {pstd}
 Create another N by 3 matrix. Recall, we have 4 outcomes, 4 subgroups and 3 treatment control comparisons.{p_end}
 {phang}{cmd:. mata: excludeHyp = (4,4,3)}{p_end}
-{phang}{cmd:. listetal gave amount amountmat amountchange, subgroup(groupid) treatment(ratio) exclude(excludeHyp)}{p_end}
+{phang}{cmd:. listetal2015 gave amount amountmat amountchange, subgroup(groupid) treatment(ratio) exclude(excludeHyp)}{p_end}
