@@ -10,7 +10,7 @@ If it is your first time running the code, ensure that Stata knows to look in ll
 
 From the Stata command line
 ```
-mata: mata mlist index
+mata: mata mlib index
 ```
 See listetal_examples.do for usage example OR from stata terminal type 'help listetal'
 
