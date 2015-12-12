@@ -4,12 +4,8 @@ insheet using data.csv, comma names
 gen amountmat = amount * ratio
 gen groupid = (redcty==1 & red0 == 1) + (redcty==0 & red0 == 1)*2 + (redcty==0 & red0 == 0)*3 + (redcty==1 & red0 == 0)*4
 replace groupid = . if groupid == 0
-cd
-cd mht
 
 // help listetal2015
-
-
 
 // example 1
 listetal2015 gave amount amountmat amountchange, treatment(treatment)
