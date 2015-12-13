@@ -1,4 +1,5 @@
 program listetal2015
+    version 14
     syntax varlist [if] [in], treatment(varlist) [ subgroup(varname) combo(string) exclude(name) only(name) ]
     //args outcomes subgroupid treatment combo select
 
