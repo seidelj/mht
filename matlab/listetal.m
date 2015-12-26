@@ -10,7 +10,7 @@ function [output]=listetal(Y,sub,D,combo,select)
 
 % Among the input arguments of listetal: 
 % Y is an n by numoc matrix with ijth element being the jth outcome of the ith unit;
-% sub is an n by 1 matrix with ith element being the subgroup ID of the ith unit;
+% sub is an n by 1 matrix with ith element being the subgroup ID of the ith unit, where a subgroup ID is coded as an integer in [1,numsub];
 % D is an n by 1 matrix in which the ith element is the treatment status of the ith unit (the control group is coded as 0);
 % combo is a numpc by 2 matrix, each row of which indicates a pairwise comparison of interest;
 % select is a numoc by numsub by numpc matrix, where the ijkth element is equal to 1 if we are intersted in 
@@ -28,7 +28,7 @@ function [output]=listetal(Y,sub,D,combo,select)
 n=size(Y,1); % the number of units
 B=3000;        % the number of simulated samples
 numoc=size(Y,2); % the number of outcomes
-numsub=size(unique(sub),1); % the number of subgroups
+numsub=size(unique(sub),1)-(sum(sub==0)>0); % the number of subgroups
 numg=size(unique(D),1)-1;  % the number of treatment groups (not including the control group)
 numpc=size(combo,1); % the number of pairs of treatment (control) groups of interest
 
@@ -174,11 +174,11 @@ for i=1:nh
                 counter=counter+1;
                 for m=2:size(tran,1)
                     belong=0; % the total number of rows of "transtemp" that "tran{m}" can be connected to by "transitivity"
-                    for n=1:size(trantemp,1)
-                    if unique([trantemp{n} tran{m}])<size(trantemp{n},2)+size(tran{m},2)
-               trantemp{n}=unique([trantemp{n} tran{m}]);
+                    for N=1:size(trantemp,1)
+                    if unique([trantemp{N} tran{m}])<size(trantemp{N},2)+size(tran{m},2)
+               trantemp{N}=unique([trantemp{N} tran{m}]);
                belong=belong+1;
-               if n==size(trantemp,1) && belong==0
+               if N==size(trantemp,1) && belong==0
                trantemp=[trantemp;tran{m}];
                end
                     end
@@ -220,8 +220,8 @@ holm=min(statsrank(:,7).*(nh:-1:1)',ones(nh,1)); % p-values based on the Holm's 
 
 output=sortrows([statsrank(:,1:7) alphamul alphamulm bon holm],1); % restore the order
 output=output(:,2:end);
-% check=output(:,6)<=output(:,7) & output(:,7)>=output(:,8) & output(:,7)<=output(:,9) & output(:,7)<=output(:,10); % check if the results are what we should expect
-output=dataset({output,'outcome','subgroup','treatment1','treatment2','diff_in_means','Remark3_!','Thm3_1','Remark3_7','Bonf','Holm'});
+check=output(:,6)<=output(:,7) & output(:,7)>=output(:,8) & output(:,7)<=output(:,9) & output(:,7)<=output(:,10); % check if the results are what we should expect
+output=dataset({output,'outcome','subgroup','treatment1','treatment2','diff_in_means','Remark3_1','Thm3_1','Remark3_7','Bonf','Holm'});
 
 
 end

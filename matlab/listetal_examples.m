@@ -1,4 +1,5 @@
-data=csvread('data.csv',1,0); % read the dataset
+data=importdata('/Users/yangxu/Documents/MATLAB/data.csv');
+data=data.data; % read the dataset
 
 %% Hypothesis testing with multiple outcomes: 
 
@@ -23,9 +24,9 @@ select=ones(numoc,numsub,numpc);             % we are interested in all the numo
 Y=data(:,12);    % the vector of outcomes
 D=data(:,8);    % the vector of treatment statuses
 sub=(data(:,17)==1 & data(:,32)==1)+(data(:,17)==0 & data(:,32)==1)*2....
-    +(data(:,17)==0 & data(:,32)==0)*3+(data(:,17)==1 & data(:,32)==0)*4; % subgroup id's
+    +(data(:,17)==0 & data(:,32)==0)*3+(data(:,17)==1 & data(:,32)==0)*4; % subgroup id's, where sub=0 indicates missing subgroup information
 numoc=size(Y,2);                             % the number of outcomes
-numsub=size(unique(sub),1);                  % the number of subgroups
+numsub=size(unique(sub),1)-(sum(sub==0)>0);  % the number of subgroups
 numg=size(unique(D),1)-1;                    % the number of treatment groups (not including the control group)
 combo=[zeros(numg,1) (1:numg)'];             % we compare each treatment to the control
 numpc=size(combo,1);                         % the number of pairs of treatment (control) groups of interest
@@ -64,9 +65,9 @@ amountmat=data(:,1).*data(:,10);             % dollars raised per letter includi
 Y=[data(:,[12,1]) amountmat data(:,35)];     % the matrix of outcomes
 D=data(:,10);                                % Treatment (control) status
 sub=(data(:,17)==1 & data(:,32)==1)+(data(:,17)==0 & data(:,32)==1)*2....
-    +(data(:,17)==0 & data(:,32)==0)*3+(data(:,17)==1 & data(:,32)==0)*4; % subgroup id's
+    +(data(:,17)==0 & data(:,32)==0)*3+(data(:,17)==1 & data(:,32)==0)*4; % subgroup id's, where sub=0 indicates missing subgroup information
 numoc=size(Y,2);                             % the number of outcomes
-numsub=size(unique(sub),1);                  % the number of subgroups
+numsub=size(unique(sub),1)-(sum(sub==0)>0);  % the number of subgroups
 numg=size(unique(D),1)-1;                    % the number of treatment groups (not including the control group)
 combo=[zeros(numg,1) (1:numg)'];             % we compare each treatment to the control
 numpc=size(combo,1);                         % the number of pairs of treatment (control) groups of interest
