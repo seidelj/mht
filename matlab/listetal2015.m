@@ -2,38 +2,38 @@
 function [output] = listetal2015(Y,sub,D,combo,select)
 
 % LISTETAL2015 considers the multiple hypothesis testing problem in
-% experiment economics discribed in List, Shaikh, and Xu (2015).
+% experimental economics described in List, Shaikh, and Xu (2015).
 %
 %   Denote by n the number of units, by numoc the number of outcomes, by
 %   numsub the number of subgroups, and by numpc the number of pairs of
 %   treatment (control) groups of interest.
 %
 %   Among the input arguments of listetal2015: 
-%   Y is an n by numoc matrix with ijth element being the jth outcome 
+%   Y is an n by numoc matrix with the ijth element being the jth outcome 
 %   of the ith unit;
-%   sub is an n by 1 matrix with ith element being the subgroup ID 
+%   sub is an n by 1 matrix with the ith element being the subgroup ID 
 %   of the ith unit, where a subgroup ID is coded as an integer in [1,numsub];
 %   D is an n by 1 matrix in which the ith element is the treatment status
 %   of the ith unit (the control group is coded as 0);
 %   combo is a numpc by 2 matrix, each row of which indicates a pairwise
 %   comparison of interest;
 %   select is a numoc by numsub by numpc matrix, where the ijkth element 
-%   is equal to 1 if we are intersted in the hypothesis for the ith outcome, 
-%   jth subgroup, and the kth parwise comparison, and the ijkth element is 
+%   is equal to 1 if we are interested in the hypothesis for the ith outcome, 
+%   the jth subgroup, and the kth pairwise comparison, and the ijkth element is 
 %   equal to 0 otherwise.
 %
 %   The output argument "output" is a matrix with 10 columns:
 %   columns 1-4 present the id's of the corresponding outcomes, subgroups, 
 %   and treatment (control) groups;
-%   the 5th column presents absolute values of difference in sample means;
-%   the 6th column presents p-values based on the single testing procedure 
+%   the 5th column presents the absolute values of difference in sample means;
+%   the 6th column presents the p-values based on the single testing procedure 
 %   described in Remark 3.1 of List, Shaikh, and Xu (2015);
-%   the 7th column presents p-values based on the multiple testing procedure
+%   the 7th column presents the p-values based on the multiple testing procedure
 %   described in Theorem 3.1 of List, Shaikh, and Xu (2015);
-%   the 8th column presents p-values based on the multiple testing procedure
+%   the 8th column presents the p-values based on the multiple testing procedure
 %   described in Remark 3.7 of List, Shaikh, and Xu (2015);
-%   the 9th column presents p-values based on the Bonferroni method;
-%   the 10th column presents p-values based on the Holm's method.
+%   the 9th column presents the p-values based on the Bonferroni method;
+%   the 10th column presents the p-values based on the Holm's method.
 %   
 %   Please refer to List, Shaikh, and Xu (2015) for examples.
 
@@ -131,8 +131,8 @@ psin = alphasin; % p-values based on the single testing procedure described in R
 nh = sum(sum(sum(select)));   % the number of hypotheses of interest
 statsall = zeros(nh,8+B);     % columns 1-5 present the id's of the hypotheses, outcomes, subgroups, and treatment (control) groups;
                               % the 6th column shows the studentized differences in means for all the hypotheses based on the actual data
-                              % the 7th column presents p-values based on the single testing procedure described in Remark 3.1 of List, Shaikh, and Xu (2015);
-                              % the 8th column presents 1-p values based on the actual data;
+                              % the 7th column presents the p-values based on the single testing procedure described in Remark 3.1 of List, Shaikh, and Xu (2015);
+                              % the 8th column presents the 1-p values based on the actual data;
                               % the subsequent columns present the corresponding 1-p values based on the simulated samples
 counter = 1;                  % the loop counter
 
@@ -171,7 +171,7 @@ for i=1:nh
             cont = 0; % cont=1 if any of the previously rejected hypotheses contradicts the current subset of hypotheses
         for l=1:i-1
             sameocsub = subset(k,ismember(statsall(subset(k,:),2:3),statsrank(l,2:3),'rows')==1); % the hypotheses in "subset(k,:)" with the same outcome and subgroup as the lth hypothesis
-            tran = mat2cell(statsall(sameocsub,4:5),ones(1,size(sameocsub,2)),2); % this cell array presents all the sets of equal treatment (control) groups implied by "transitivity" under the null hypotheses in "sameocsub" 
+            tran = mat2cell(statsall(sameocsub,4:5),ones(1,size(sameocsub,2)),2); % this cell array presents all the sets of "connected" treatment (control) groups implied by "transitivity" under the null hypotheses in "sameocsub" 
             trantemp = tran;
             if size(sameocsub,2)<=1
                 cont = 0;
