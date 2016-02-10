@@ -1,5 +1,6 @@
 #Multiple Hypothesis Testing
 Stata code for the procedure detailed in List, Shaikh, and Xu (2015)
+[link](https://ideas.repec.org/p/feb/artefa/00402.html)
 
 ##In stata 
 Make sure your current directory contains
