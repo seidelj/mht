@@ -1,5 +1,5 @@
 
-function [output] = listetal2015(Y,sub,D,combo,select)
+function [output] = listetal2015(B,Y,sub,D,combo,select)
 
 % LISTETAL2015 considers the multiple hypothesis testing problem in
 % experimental economics described in List, Shaikh, and Xu (2015).
@@ -9,6 +9,8 @@ function [output] = listetal2015(Y,sub,D,combo,select)
 %   treatment (control) groups of interest.
 %
 %   Among the input arguments of listetal2015: 
+%   B is the number of simulated samples (the suggested number is 3000, 
+%   but a larger number is recommended when there are a large number of hypotheses);
 %   Y is an n by numoc matrix with the ijth element being the jth outcome 
 %   of the ith unit;
 %   sub is an n by 1 matrix with the ith element being the subgroup ID 
@@ -38,7 +40,6 @@ function [output] = listetal2015(Y,sub,D,combo,select)
 %   Please refer to List, Shaikh, and Xu (2015) for examples.
 
 n = size(Y,1); % the number of units
-B = 3000;        % the number of simulated samples
 numoc = size(Y,2); % the number of outcomes
 numsub = size(unique(sub),1)-(sum(sub==0)>0); % the number of subgroups
 numg = size(unique(D),1)-1;  % the number of treatment groups (not including the control group)
