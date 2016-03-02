@@ -1,5 +1,6 @@
 #Multiple Hypothesis Testing
 Stata code for the procedure detailed in List, Shaikh, and Xu (2015)
+[link](https://ideas.repec.org/p/feb/artefa/00402.html)
 
 ##In stata 
 Make sure your current directory contains
@@ -28,7 +29,11 @@ See listetal2015_examples.do for usage example OR from stata terminal type 'help
 * stata11/llistetal2015_v11.mlib contains the mata functions required for the command; compiled using Stata11.
 
 ####For older versions of Stata (<Stata14 and =>Stata11)
-Stata versions that are atleast Stata11 can still use this command.  Simply replace llistetal2015.mlib with llistetal2015_v11.mlib.
+Stata versions that are atleast Stata11 can still use this command. First, replace llistetal2015.mlib with llistetal2015_v11.mlib.
+Second, remove line 2 of listetal2015.ado
+```
+version 14
+```
 
 The key difference in these two files (outside of how they are compiled), is the way in which ids are selected for the bootstrap sample.
 
