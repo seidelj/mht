@@ -29,10 +29,21 @@ See listetal2015_examples.do for usage example OR from stata terminal type 'help
 * stata11/llistetal2015_v11.mlib contains the mata functions required for the command; compiled using Stata11.
 
 ####For older versions of Stata (<Stata14 and =>Stata11)
-Stata versions that are atleast Stata11 can still use this command. First, replace llistetal2015.mlib with llistetal2015_v11.mlib.
-Second, remove line 2 of listetal2015.ado
+Stata versions that are atleast Stata11 can still use this command.  However, the bootstrap option is currently unavailable for older versions of Stata.  To use this command with an older version of Stata follow the steps below.
+
+First, replace llistetal2015.mlib with llistetal2015_v11.mlib.
+Second, uncomment line 4 and 26. Remove line 2, 4 and 25 of listetal2015.ado 
+
 ```
-version 14
+### Uncomment ###
+line 4: syntax varlist [if] [in], treatment(varlist) [ subgroup(varname) combo(string) exclude(name) only(name) ]
+line 26: mata: results = seidelxu(Y, sub, D, combo, select)
+```
+```
+### Remove ###
+line 2: version 14
+line 4: syntax varlist [if] [in], treatment(varlist) [ subgroup(varname) combo(string) exclude(name) only(name) bootstrap(integer 3000)]
+line 25: mata: results = seidelxu(Y, sub, D, combo, select, `bootstrap')
 ```
 
 The key difference in these two files (outside of how they are compiled), is the way in which ids are selected for the bootstrap sample.
