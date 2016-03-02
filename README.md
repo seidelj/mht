@@ -54,3 +54,5 @@ floor( (b-a+1) * runiform() + a)  // in llistetelal2015_v11.mlib (Stata11)
 runiformint(r, c, a, b) // in listetal2015.mlib (Stata14)
 ```
 The two methods both produce the desired result, but the matrix of IDs is slightly different accross these two methods.  Therefore, the bootstrapped statistics used to generate the outputted p-values will not be identical to the results presented in List, Shaikh, Xu 2015.
+
+contact: seidelj@uchicago.edu
