@@ -1,6 +1,6 @@
 program listetal2015
     version 14
-    syntax varlist [if] [in], treatment(varlist) [ subgroup(varname) combo(string) exclude(name) only(name) ]
+    syntax varlist [if] [in], treatment(varlist) [ subgroup(varname) combo(string) exclude(name) only(name) bootstrap(integer 3000)]
     //args outcomes subgroupid treatment combo select
 
     if ("`combo'" != "" & "`combo'" != "pairwise" & "`combo'" != "treatmentcontrol"){
@@ -21,7 +21,7 @@ program listetal2015
     mata: combo = buildcombo("`combo'", sizes[3])
     mata: numpc = buildnumpc(combo)
     mata: select = buildselect(onlymat, excludemat, sizes[1], sizes[2], numpc)
-    mata: results = seidelxu(Y, sub, D, combo, select)
+    mata: results = seidelxu(Y, sub, D, combo, select, `bootstrap')
     mata: buildoutput("results", results)
 
     matlist results

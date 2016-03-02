@@ -31,6 +31,7 @@
     {cmd:combo("treatmentcontrol")}{p_end}
 {synopt:{opth only(name)}} the numoc*numsub*numpc hypotheses to be tested{p_end}
 {synopt:{opth exclude(name)}} the numoc*numsub*numpc hypotheses not to be tested{p_end}
+{synopt:{opth boostrap(integer)}} the number of simulated samples to use{p_end}
 {synoptline}
 {p2colreset}{...}
 
@@ -60,6 +61,7 @@ The default is {cmd:combo("treatmentcontrol")}, compares each treatment to the c
 
 {phang}
 {opt only(name)} N by 3 matrix specifying which hypothesis to be tested; optional.{p_end}
+
 {phang}
 {opt exclude(name)} N by 3 matrix specifying which hypothesis not to be tested; optional.{p_end}
 {phang}
@@ -74,6 +76,10 @@ By default {cmd:listetal2015} will calculate all hypothesis based on the number 
 in {it:varlist} {it:group(varname)} and {it:treatment(varname)}, respectively. In section 4.4 of List, Shaikh and Xu (2015) simultaniously consider
 4 outcome variables, 4 subgroups and 3 treatment conditions, producting a table of 48 hypothesis test. However, there are cases in which you
 may only be interested in certain outcome by subgroup by treatment hypothesis. use {opt only} or {opt exclude}.{p_end}
+
+
+{phang}
+{opt bootstrap(integer)} the number of simulated samples. the default is 3000,  but a larger number is recommended when there are a large number of hypotheses; optional.{p_end}
 
 {marker remarks}{...}
 {title:Remarks}
