@@ -8,7 +8,7 @@ Make sure your current directory contains
 * lmhtexp.mlib -- the required mata functions that perform the computation
 * mhtexp.sthlp -- OPTIONAL but recommended.  Usage: from stata command line
 ```
-help listetal2015
+help mhtexp
 ```
 If it is your first time running the code, ensure that Stata knows to look in lmhtexp.mlib
 
