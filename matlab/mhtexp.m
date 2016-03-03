@@ -1,14 +1,14 @@
 
-function [output] = listetal2015(B,Y,sub,D,combo,select)
+function [output] = mhtexp(B,Y,sub,D,combo,select)
 
-% LISTETAL2015 considers the multiple hypothesis testing problem in
+% MHTEXP considers the multiple hypothesis testing problem in
 % experimental economics described in List, Shaikh, and Xu (2015).
 %
 %   Denote by n the number of units, by numoc the number of outcomes, by
 %   numsub the number of subgroups, and by numpc the number of pairs of
 %   treatment (control) groups of interest.
 %
-%   Among the input arguments of listetal2015: 
+%   Among the input arguments of mhtexp: 
 %   B is the number of simulated samples (the suggested number is 3000, 
 %   but a larger number is recommended when there are a large number of hypotheses);
 %   Y is an n by numoc matrix with the ijth element being the jth outcome 
