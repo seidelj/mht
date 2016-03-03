@@ -29,7 +29,7 @@ See mhtexp_examples.do for usage example OR from stata terminal type 'help mhtex
 * stata11/lmhtexp11.mlib contains the mata functions required for the command; compiled using Stata11.
 
 ####For older versions of Stata (<Stata14 and =>Stata11)
-Stata versions that are atleast Stata11 can still use this command.  However, the bootstrap option is currently unavailable for older versions of Stata.  To use this command with an older version of Stata, uncomment line 2 of mhtexp.ado.
+Stata versions that are atleast Stata11 can still use this command.  However, the bootstrap option is currently unavailable for older versions of Stata.  To use this command with an older version of Stata, first replace lmhtexp.mlib with lmhtexp11.mlib; second uncomment line 2 of mhtexp.ado.
 
 ```
 ### Remove ###
