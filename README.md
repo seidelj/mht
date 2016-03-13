@@ -2,8 +2,14 @@
 Stata code for the procedure detailed in List, Shaikh, and Xu (2015)
 [link](https://ideas.repec.org/p/feb/artefa/00402.html)
 
-##In stata 
-Make sure your current directory contains
+##Stata 14 Users
+You can install mhtexp using Stata's ssc command.
+```
+ssc install mhtexp
+```
+
+##Manual Stata Install 
+Download or clone this repository and make sure your current directory contains
 * mhtexp.ado -- this initializes the stata comand "listetal2015" for usage from the command line or .do file
 * lmhtexp.mlib -- the required mata functions that perform the computation
 * mhtexp.sthlp -- OPTIONAL but recommended.  Usage: from stata command line
