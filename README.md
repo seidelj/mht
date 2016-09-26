@@ -10,7 +10,7 @@ ssc install mhtexp
 
 ##Manual Stata Install 
 Download or clone this repository and make sure your current directory contains
-* mhtexp.ado -- this initializes the stata comand "listetal2015" for usage from the command line or .do file
+* mhtexp.ado -- this initializes the stata comand "mhtexp" for usage from the command line or .do file
 * lmhtexp.mlib -- the required mata functions that perform the computation
 * mhtexp.sthlp -- OPTIONAL but recommended.  Usage: from stata command line
 ```
