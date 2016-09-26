@@ -29,7 +29,7 @@ See mhtexp_examples.do for usage example OR from stata terminal type 'help mhtex
 
 * mhtexp_examples.do do file with examples using the included data set.
 * mhtexp.sthlp  Stata14 help file
-* mhtexp.ado Contains the Stata command definition of listetl2015
+* mhtexp.ado Contains the Stata command definition of mhtexp
 * data.csv contains the data set used in the List, Shaikh, and Xu (2015)
 * lmhtexp.mlib contains mata function required for the command; compiled using Stata14
 * stata11/lmhtexp11.mlib contains the mata functions required for the command; compiled using Stata11.
