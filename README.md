@@ -8,18 +8,21 @@ You can install mhtexp using Stata's ssc command.
 ssc install mhtexp
 ```
 
+Once the command finishes, you should be able to use the command.  A data set, data.csv, and an example do file, mhtexp_examples.do are available in this repository for download if you want to run an example.
+
+
 ##Manual Stata Install 
 Download or clone this repository and make sure your current directory contains
 * mhtexp.ado -- this initializes the stata comand "mhtexp" for usage from the command line or .do file
 * lmhtexp.mlib -- the required mata functions that perform the computation
 * mhtexp.sthlp -- OPTIONAL but recommended.  Usage: from stata command line: `help mhtexp`
 
-If it is your first time running the code, ensure that Stata knows to look in lmhtexp.mlib
-
-From the Stata command line
+If it is your first time running the code, ensure that Stata knows to look in lmhtexp.mlib. From the Stata command line enter
 ```
 mata: mata mlib index
 ```
+
+
 See mhtexp_examples.do for usage example OR from stata terminal type `help mhtexp`
 
 
@@ -49,4 +52,6 @@ runiformint(r, c, a, b) // in lmhtexp.mlib (Stata14)
 ```
 The two methods both produce the desired result, but the matrix of IDs is slightly different accross these two methods.  Therefore, the bootstrapped statistics used to generate the outputted p-values will not be identical to the results presented in List, Shaikh, Xu 2015.
 
+
 contact: seidelj@uchicago.edu
+
