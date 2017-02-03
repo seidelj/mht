@@ -12,17 +12,15 @@ ssc install mhtexp
 Download or clone this repository and make sure your current directory contains
 * mhtexp.ado -- this initializes the stata comand "mhtexp" for usage from the command line or .do file
 * lmhtexp.mlib -- the required mata functions that perform the computation
-* mhtexp.sthlp -- OPTIONAL but recommended.  Usage: from stata command line
-```
-help mhtexp
-```
+* mhtexp.sthlp -- OPTIONAL but recommended.  Usage: from stata command line: `help mhtexp`
+
 If it is your first time running the code, ensure that Stata knows to look in lmhtexp.mlib
 
 From the Stata command line
 ```
 mata: mata mlib index
 ```
-See mhtexp_examples.do for usage example OR from stata terminal type 'help mhtexp'
+See mhtexp_examples.do for usage example OR from stata terminal type `help mhtexp`
 
 
 ####Summary of contents
