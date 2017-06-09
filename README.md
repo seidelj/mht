@@ -1,8 +1,10 @@
-#Multiple Hypothesis Testing
+# Multiple Hypothesis Testing
 Stata code for the procedure detailed in List, Shaikh, and Xu (2015)
 [link](https://ideas.repec.org/p/feb/artefa/00402.html)
 
-##Stata 14 Users
+The software is made available as is, and no warranty - about the software, its performance or its conformity to any specification - is given or implied. 
+
+## Stata 14 Users
 You can install mhtexp using Stata's ssc command.
 ```
 ssc install mhtexp
@@ -11,7 +13,7 @@ ssc install mhtexp
 Once the command finishes, you should be able to use the command.  A data set, data.csv, and an example do file, mhtexp_examples.do are available in this repository for download if you want to run an example.
 
 
-##Manual Stata Install 
+## Manual Stata Install 
 Download or clone this repository and make sure your current directory contains
 * mhtexp.ado -- this initializes the stata comand "mhtexp" for usage from the command line or .do file
 * lmhtexp.mlib -- the required mata functions that perform the computation
@@ -26,7 +28,7 @@ mata: mata mlib index
 See mhtexp_examples.do for usage example OR from stata terminal type `help mhtexp`
 
 
-####Summary of contents
+#### Summary of contents
 
 * mhtexp_examples.do do file with examples using the included data set.
 * mhtexp.sthlp  Stata14 help file
@@ -35,7 +37,7 @@ See mhtexp_examples.do for usage example OR from stata terminal type `help mhtex
 * lmhtexp.mlib contains mata function required for the command; compiled using Stata14
 * stata11/lmhtexp11.mlib contains the mata functions required for the command; compiled using Stata11.
 
-####For older versions of Stata (<Stata14 and =>Stata11)
+#### For older versions of Stata (<Stata14 and =>Stata11)
 Stata versions that are atleast Stata11 can still use this command.  However, the bootstrap option is currently unavailable for older versions of Stata.  To use this command with an older version of Stata, first replace lmhtexp.mlib with lmhtexp11.mlib and remove or comment out line 2 in mhtexp.ado.
 
 ```
