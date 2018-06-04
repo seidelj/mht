@@ -7,7 +7,7 @@ B=3000;                         % the number of simulated samples
 
 % We consider four outcome variables: response rate, dollars given not including
 % match, dollars given including match, and amount change.
-amountmat = data(:,1).*data(:,10);             % dollars raised per letter including match
+amountmat = data(:,1).*(data(:,10)+ones(size(data,1),1));             % dollars raised per letter including match
 Y = [data(:,[12,1]) amountmat data(:,35)];     % the matrix of outcomes
 D = data(:,8);                                 % the vector of treatment statuses
 sub = ones(size(D,1),1);                       % the subgroup ID's
@@ -52,7 +52,7 @@ select = ones(numoc,numsub,numpc);             % We are interested in all the nu
 [example3] = mhtexp(Y,sub,D,combo,select)
 
 % all pairwise comparisons among the treatment and control groups
-combo = combntns(0:numg,2);                    % We consider all the pairwise comparisons across the treatment and control groups.
+combo =  nchoosek(0:numg,2);                    % We consider all the pairwise comparisons across the treatment and control groups.
 numpc = size(combo,1);                         % the number of pairs of treatment (control) groups of interest
 select = ones(numoc,numsub,numpc);             % We are interested in all the numoc*numsub*numpc hypotheses.
 [example4] = mhtexp(B,Y,sub,D,combo,select)
@@ -63,7 +63,7 @@ select = ones(numoc,numsub,numpc);             % We are interested in all the nu
 % four subgroups: red county in a red state, blue county in a red state,
 % red county in a blue state, and blue county in a blue state. Lastly, 
 % we compare the control to the three treatments for matching ratio: 1:1, 2:1, and 3:1. 
-amountmat = data(:,1).*data(:,10);             % dollars raised per letter including match
+amountmat = data(:,1).*(data(:,10)+ones(size(data,1),1));             % dollars raised per letter including match
 Y = [data(:,[12,1]) amountmat data(:,35)];     % the matrix of outcomes
 D = data(:,10);                                % treatment (control) status
 sub = (data(:,17)==1 & data(:,32)==1)+(data(:,17)==0 & data(:,32)==1)*2....

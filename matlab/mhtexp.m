@@ -166,7 +166,7 @@ for i=1:nh
     else
         sortmaxstatsm = zeros(1,B); % compute at each quantile the maximum of the critical values of all the "true" subsets of hypotheses
     for j=nh-i+1:-1:1
-        subset = combntns(statsrank(i:end,1),j); % all the subsets of hypotheses with j elements
+        subset = nchoosek(statsrank(i:end,1),j); % all the subsets of hypotheses with j elements
         sumcont = 0; % the total number of subsets of hypotheses with j elements that contradict any of the previously rejected hypotheses
         for k=1:size(subset,1)
             cont = 0; % cont=1 if any of the previously rejected hypotheses contradicts the current subset of hypotheses

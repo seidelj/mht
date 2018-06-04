@@ -1,7 +1,7 @@
 clear all
 insheet using data.csv, comma names
 //Creating outcome variable
-gen amountmat = amount * ratio
+gen amountmat = amount * (1+ratio)
 gen groupid = (redcty==1 & red0 == 1) + (redcty==0 & red0 == 1)*2 + (redcty==0 & red0 == 0)*3 + (redcty==1 & red0 == 0)*4
 replace groupid = . if groupid == 0
 
