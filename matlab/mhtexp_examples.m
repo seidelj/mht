@@ -49,7 +49,7 @@ numg = size(unique(D),1)-1;                    % the number of treatment groups 
 combo = [zeros(numg,1) (1:numg)'];             % We compare each treatment to the control.
 numpc = size(combo,1);                         % the number of pairs of treatment (control) groups of interest
 select = ones(numoc,numsub,numpc);             % We are interested in all the numoc*numsub*numpc hypotheses.
-[example3] = mhtexp(Y,sub,D,combo,select)
+[example3] = mhtexp(B,Y,sub,D,combo,select)
 
 % all pairwise comparisons among the treatment and control groups
 combo =  nchoosek(0:numg,2);                    % We consider all the pairwise comparisons across the treatment and control groups.
